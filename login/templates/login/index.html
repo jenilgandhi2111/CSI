@@ -1,0 +1,33 @@
+{% extends 'login/base.html' %}
+{% block title %}Login-Page
+{% endblock title %}
+{% block messages %}
+{% for message in messages  %}
+  {% csrf_token %}
+      <div class="alert alert-{{message.tags}} rounded-pill mt-2 alert-dismissible fade show" role="alert">
+    <strong>Message</strong> {{message}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {% endfor %}
+{% endblock messages %}
+{% block body %}
+<body class="text-center">
+<div class="container">
+    <form class="form-signin" method="post" action="/login/">
+  {% csrf_token %}
+  <h1 class="h3 mb-3 font-weight-normal mt-3">Sign in to recruitment portal</h1>
+  <label for="inputEmail" class="sr-only mt-3 rounded-pill"></label>
+  <input type="text" id="stu_id"  class="form-control mt-3 rounded-pill border border-success" placeholder="DDU-student-id" name="stu_id" required="" autofocus="">
+  <br>
+  <label for="inputPassword" class="sr-only mt-3">Password</label>
+  <input type="password" id="password" class="form-control rounded-pill border border-success" placeholder="Password" name="password" required="">
+  
+  <button class="btn btn-lg btn-success mt-3 rounded-pill" type="submit">Log in</button>
+  <p class="mt-5 mb-3 text-muted">© Dharmsinh Desai University-2020-21</p>
+</form>
+</div>
+
+</body>
+{% endblock body %}

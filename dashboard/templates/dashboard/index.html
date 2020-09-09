@@ -1,0 +1,103 @@
+{% extends 'dashboard/base.html' %}
+{% block body %}
+
+<div class="row container mt-4">
+
+<div class=" col-3 ">
+<div class="card border border-secondary" style="width: 16rem;">
+  <img src="{{image_path}}" class="card-img-top rounded-circle my-2 mx-3 border border-secondary" style="width:14rem ;height:14rem" alt="...">
+  <div class="card-body">
+  <hr>
+    <h4 class="card-text">Jenil J Gandhi</h4>
+  </div>
+</div>
+
+</div>
+<div class="col-6">
+
+<div class="container display-4 " style="font-size:20px">
+<h4>Your Profile</h4>
+<hr>
+<ul>
+
+{% for key,val in passing.items %}
+<li class="list-group-item rounded-pill my-1 border border-success">
+    <div class="row">
+    <div class="col-4" style="text-align:left">
+    <b>{{key}}</b>
+    </div>
+    <div class="col-8">
+    {{val}}
+    </div>
+    </div>
+</li>
+{% endfor %}
+
+
+</ul>
+
+</div>
+
+
+</div>
+
+<div class="col-3">
+<h4>Your Skills</h4>
+{% for author in  expert %}
+
+<button type="" class="btn btn-info rounded-pill mx-1 my-1">{{author|safe}}</button>
+
+{% endfor %}
+
+<button type="button" class="btn btn-warning rounded-pill" data-toggle="modal" data-target="#exampleModal">
+  Add Skills
+</button>
+
+<!-- Modal -->
+<form method="POST" action="add_skill" class="display-4" style="font-size:2rem">
+{% csrf_token %}
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Skills</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+  <div class="form-group">
+    <label for="exampleInputEmail1">Type your skill</label>
+    <input type="text" class="form-control rounded-pill" name="skill" id="exampleInputEmail1" aria-describedby="emailHelp">
+    
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Confirm your skill</label>
+    <input type="text" class="form-control rounded-pill" name="conf_skill" id="exampleInputPassword1">
+  </div>
+  
+  
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary rounded-pill" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-success rounded-pill">Add Skill</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</form>
+
+
+{% endblock body %}
+
+{% block your_profile_button %}
+active
+      {% endblock your_profile_button %}
+{% block placement_button %}
+      {% endblock placement_button %}
+{% block inter_opening_button %}
+      {% endblock inter_opening_button %}

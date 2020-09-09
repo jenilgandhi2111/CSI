@@ -1,0 +1,64 @@
+{% extends 'dashboard/base.html' %}
+{% block your_profile_button %}
+
+      {% endblock your_profile_button %}
+{% block placement_button %}
+active
+      {% endblock placement_button %}
+{% block inter_opening_button %}
+
+      {% endblock inter_opening_button %}
+
+{% block body %}
+<div class="container my-3">
+
+
+<h3>Companies Open For Placement for you at CGPA: {{user_details.cgpa}}</h3>
+<p>Note: These are only those in which you can apply</p>
+{% if companies|length == 0 %}
+  <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Sorry No Companies are offering Placements at CGPA {{user_details.cgpa}}</h1>
+    <p class="lead">Work Hard you could also get placement in one of the companies</p>
+  </div>
+</div>
+
+{% endif %}
+{% for company,values in companies.items %}
+  
+<div class="card mb-3 rounded-lg" style="max-width: 540px;border-style:solid;
+    border-width:2px;  
+    border-color:rgba(88,184,40,0.5);">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="{{values.image_path}}" style="width:190px; height:200px; " ></img>
+
+    </div>
+
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{company}} - Salary-{{values.salary}} {{values.salary_in}}</h5>
+        <hr>
+        {% for role,attr in  values.items %}
+        
+        {% ifnotequal role 'image_path' %}
+        {% ifnotequal role 'salary'%}
+        {% ifnotequal role 'salary_in'%}
+        <p class="card-text"><strong>{{role}}</strong>:{{attr}} </p>
+        {% endifnotequal %}
+        {% endifnotequal %}
+        {%endifnotequal%}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endfor %}
+
+
+
+
+
+</div>
+{% endblock body %}

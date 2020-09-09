@@ -1,0 +1,20 @@
+{% extends 'dashboard/base.html' %}
+{% block body %}
+{% for company,values in companies.items %}
+<div class="container my-3">
+<div class="media border border-primary">
+  <img src="{{values.img_path}}" class="mr-3" alt="..." style="height:210px;width:200px">
+  <div class="media-body">
+    <h4 class="mt-0">Placement Offer at {{company}} for {{values.position}}</h4>
+    <hr>
+    <pre >{{values.message}}</pre>
+    <br>
+    <strong>Full-time-salary: </strong>{{values.salary}}
+  </div>
+  
+</div>
+</div>
+
+{% endfor %}
+
+{% endblock body %}
