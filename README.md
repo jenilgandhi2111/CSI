@@ -8,6 +8,9 @@
   
 <hr>
 <h4>Profile-Page<h4>
+<img src="https://github.com/jenilgandhi2111/CSI/blob/master/CSI_login.PNG">
+<hr>
+<h4>Profile-Page<h4>
 <img src="https://github.com/jenilgandhi2111/CSI/blob/master/CSI_home_page.PNG">
 <hr>
 <h4>Placement-Page<h4>
